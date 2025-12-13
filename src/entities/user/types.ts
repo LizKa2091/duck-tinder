@@ -17,3 +17,9 @@ export interface IMatchesState {
 }
 
 export type Gender = 'male' | 'female';
+
+export interface IUserData {
+   name: string;
+   gender: Gender;
+   country: string;
+}
