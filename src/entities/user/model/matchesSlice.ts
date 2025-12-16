@@ -11,7 +11,7 @@ const matchesSlice = createSlice({
    reducers: {
       addToMatches: (state, action: PayloadAction<AddMatchPayload>) => {
          const itemToMatch = action.payload;
-         const isAlreadyMatched = state.matches.some((match) => match.id === itemToMatch.id);
+         const isAlreadyMatched = state.matches.some((match) => match.cat.catData.id === itemToMatch.cat.catData.id);
 
          if (!isAlreadyMatched) {
             state.matches.push({
@@ -23,7 +23,7 @@ const matchesSlice = createSlice({
       removeFromMatches: (state, action: PayloadAction<{ id: string }>) => {
          const itemToRemove = action.payload;
 
-         state.matches.filter((match) => match.id !== itemToRemove.id)
+         state.matches.filter((match) => match.cat.catData.id.value !== itemToRemove.id)
       }
    }
 })

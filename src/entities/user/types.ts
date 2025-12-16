@@ -1,14 +1,7 @@
-export interface IDuckUser {
-   id: string;
-   name: string;
-   gender: Gender;
-   url: string;
-   country: string;
-}
+import type { ICatItem } from "@entities/cat/types";
 
 export interface IMatch {
-   id: string;
-   duck: IDuckUser;
+   cat: ICatItem;
    matchDate: string;
 }
 
@@ -38,4 +31,4 @@ export interface IMessagesState {
    messages: IMessageData[];
 }
 
-export type ISendMessagePayload = Omit<IMessageData, 'id' | 'date'>;
+export type ISendMessagePayload = Omit<IMessageData, 'id' | 'timeStamp'>;
