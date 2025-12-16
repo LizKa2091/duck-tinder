@@ -22,7 +22,7 @@ export interface IUserData {
 export interface IDialoguesStateItem {
    id: string;
    dialogueWith: string;
-   icon: string;
+   dialogueWithIconUrl: string;
    messagesData: IMessageData[];
 }
 
