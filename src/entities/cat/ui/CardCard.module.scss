@@ -1,0 +1,21 @@
+@use '../../../shared/styles/mixins.scss';
+
+.card {
+   @include centeredContainer;
+   gap: 50px;
+   padding: 35px;
+
+   &Data {
+      @include centeredContainer;
+      gap: 25px;
+      
+      .img {
+         width: 250px;
+      }
+   }
+   &Actions {
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+   }
+}

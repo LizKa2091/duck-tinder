@@ -7,3 +7,10 @@
    width: 50%;
    height: 50%;
 }
+
+@include centeredContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
