@@ -1,0 +1,28 @@
+@import '../../../../shared/styles/mixins.scss';
+@import '../../../../shared/styles/variables.scss';
+
+.messageContainer {
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid $light-gray;
+   padding: 10px 0;
+   gap: 30px;
+
+   &.you {
+      justify-content: flex-start;
+   }
+   &.buddy {
+      justify-content: flex-end;
+   }
+
+   .messageData {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+   }
+   
+   .avatar {
+      @include avatarSize;
+      border-radius: 50%;
+   }
+}
