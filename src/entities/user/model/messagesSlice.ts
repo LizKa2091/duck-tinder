@@ -26,7 +26,7 @@ const messagesSlice = createSlice({
          }
          else {
             const newDialogue: IDialoguesStateItem = {
-               id: `${currDate}-${Math.random() * 100}`,
+               id: receiver,
                dialogueWith: receiver,
                dialogueWithIconUrl: receiverIconUrl,
                messagesData: [newMsg]
@@ -41,10 +41,8 @@ const messagesSlice = createSlice({
          const dialogueExists = state.messages.find((dialogue) => dialogue.dialogueWith === dialogueWith);
 
          if (!dialogueExists) {
-            const currDate = Date.now();
-
             const newDialogue: IDialoguesStateItem = {
-               id: `${currDate}-${Math.random() * 100}`,
+               id: dialogueWith,
                dialogueWith,
                dialogueWithIconUrl,
                messagesData: []
