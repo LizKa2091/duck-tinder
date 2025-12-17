@@ -1,0 +1,23 @@
+@import '../../../../shared/styles/variables.scss';
+
+.container {
+   position: relative;
+
+   .input {
+      border-color: $light-gray;
+      border-radius: 20px;
+      width: 100%;
+      padding: 12.5px;
+   }
+   .button {
+      position: absolute;
+      border: 0;
+      border-radius: 12px;
+      background-color: $light-gray;
+      width: 25px;
+      height: 25px;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+   }
+}

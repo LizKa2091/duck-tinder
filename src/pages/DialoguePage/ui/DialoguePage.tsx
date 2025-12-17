@@ -5,7 +5,7 @@ import { useAppSelector } from '@shared/store/hooks';
 
 import styles from './DialoguePage.module.scss';
 
-const DialoguePage: FC = () => {
+export const DialoguePage: FC = () => {
    const { messages } = useAppSelector((state) => state.messages)
 
    if (!messages.length) {
@@ -16,6 +16,7 @@ const DialoguePage: FC = () => {
       <div className={styles.container}>
          {messages.map((dialogue) => 
             <DialogueItem 
+               key={dialogue.id}
                dialogueId={dialogue.id}
                dialogueWith={dialogue.dialogueWith}
                iconUrl={dialogue.dialogueWithIconUrl}

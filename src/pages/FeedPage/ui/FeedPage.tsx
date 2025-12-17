@@ -2,12 +2,13 @@ import { type FC } from 'react';
 
 import CatCard from '@entities/cat/ui/CatCard';
 import { useCat } from '@entities/cat/model/useCat';
-import { useAppDispatch } from '@shared/store/hooks';
-import { addToMatches } from '@entities/user/model/matchesSlice';
+import { useCatActions } from '@entities/cat/model/useCatActions';
+import { useStartDialogue } from '@entities/dialogue/model/useStartDialogue';
 
 export const FeedPage: FC = () => {
    const { data, isLoading, isError } = useCat();
-   const dispatch = useAppDispatch();
+   const { handleMatch, handleSkip } = useCatActions();
+   const { startDialogue } = useStartDialogue();
 
    if (isLoading) {
       return <p>Загрузка...</p>
@@ -20,9 +21,9 @@ export const FeedPage: FC = () => {
    return (
       <CatCard 
          catItem={data} 
-         onMatch={() => dispatch(addToMatches({ cat: data }))} 
-         onMessage={() => {}}
-         onSkip={() => {}}
+         onMatch={() => handleMatch(data)} 
+         onMessage={() => startDialogue(data)}
+         onSkip={handleSkip}
       />
    )
 }

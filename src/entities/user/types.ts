@@ -45,3 +45,5 @@ export interface ISendMessagePayload {
    message: string;
    receiverIconUrl: string;
 }
+
+export type CreateDialoguePayload = Omit<IDialoguesStateItem, 'id' | 'messagesData'>;

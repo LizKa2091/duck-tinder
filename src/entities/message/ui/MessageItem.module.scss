@@ -1,0 +1,17 @@
+@import '../../../shared/styles/mixins.scss';
+
+.messageContainer {
+   display: flex;
+   gap: 30px;
+
+   &.you {
+      align-items: flex-start;
+   }
+   &.buddy {
+      align-items: flex-end;
+   }
+
+   .avatar {
+      @include avatarSize;
+   }
+}
