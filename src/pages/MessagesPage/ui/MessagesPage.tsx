@@ -2,7 +2,10 @@ import { type FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from '@shared/store/hooks';
-import { MessageItem } from '@entities/message/ui';
+import { MessageItem } from '@entities/message/ui/MessageItem';
+import { MessageInput } from '@entities/message/ui/MessageInput';
+
+import styles from './MessagesPage.module.scss';
 
 export const MessagesPage: FC = () => {
    const { id } =  useParams();
@@ -18,19 +21,23 @@ export const MessagesPage: FC = () => {
       return <p>Диалог не найден</p>
    }
 
-   if (currDialogue?.messagesData.length === 0) {
-      return <p>Сообщений пока нет</p>
-   }
-
    return (
-      <div>
-         {currDialogue.messagesData.map((msg) =>
-            <MessageItem 
-               key={msg.id} 
-               messageData={msg} 
-               buddyImgUrl={currDialogue.dialogueWithIconUrl}
-            />
+      <div className={styles.container}>
+         {currDialogue?.messagesData.length === 0 ? (
+            <p>Сообщений пока нет</p>
+         ) : (
+            currDialogue.messagesData.map((msg) =>
+               <MessageItem 
+                  key={msg.id} 
+                  messageData={msg} 
+                  buddyImgUrl={currDialogue.dialogueWithIconUrl}
+               />
+            )
          )}
+         <MessageInput 
+            receiver={currDialogue.dialogueWith} 
+            receiverIconUrl={currDialogue.dialogueWithIconUrl}
+         />
       </div>
    )
 }
