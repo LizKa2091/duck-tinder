@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IMessagesState, IDialoguesStateItem, ISendMessagePayload } from "../types";
+import type { IMessagesState, IDialoguesStateItem, ISendMessagePayload, CreateDialoguePayload } from "../types";
 
 const initialState: IMessagesState = {
    messages: []
@@ -19,7 +19,7 @@ const messagesSlice = createSlice({
             timeStamp: currDate.toString()
          }
          
-         const existingDialogueIndex = state.messages.findIndex((msg) => msg.dialogueWith === receiver);
+         const existingDialogueIndex = state.messages.findIndex((dialogue) => dialogue.dialogueWith === receiver);
 
          if (existingDialogueIndex !== -1) {
             state.messages[existingDialogueIndex].messagesData.push(newMsg);
@@ -34,9 +34,27 @@ const messagesSlice = createSlice({
 
             state.messages.push(newDialogue);
          }
+      },
+      createDialogue: (state, action: PayloadAction<CreateDialoguePayload>) => {
+         const { dialogueWith, dialogueWithIconUrl } = action.payload;
+
+         const dialogueExists = state.messages.find((dialogue) => dialogue.dialogueWith === dialogueWith);
+
+         if (!dialogueExists) {
+            const currDate = Date.now();
+
+            const newDialogue: IDialoguesStateItem = {
+               id: `${currDate}-${Math.random() * 100}`,
+               dialogueWith,
+               dialogueWithIconUrl,
+               messagesData: []
+            }
+
+            state.messages.push(newDialogue);
+         }
       }
    }
 });
 
-export const { sendMessage } = messagesSlice.actions;
+export const { sendMessage, createDialogue } = messagesSlice.actions;
 export default messagesSlice.reducer;
