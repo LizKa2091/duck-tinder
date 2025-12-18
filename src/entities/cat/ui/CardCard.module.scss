@@ -1,5 +1,5 @@
-@import '../../../shared/styles/mixins.scss';
-@import '../../../shared/styles/variables.scss';
+@use '../../../shared/styles/mixins.scss' as *;
+@use '../../../shared/styles/variables.scss' as *;
 
 .card {
    @include centeredContainer;
