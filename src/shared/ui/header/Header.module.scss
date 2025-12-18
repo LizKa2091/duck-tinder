@@ -1,0 +1,26 @@
+@import '../../../shared/styles/variables.scss';
+
+.header {
+   display: flex;
+   align-items: center;
+   background-color: $light-blue;
+   color: $dark-blue;
+   width: 100%;
+   padding: 25px $container-padding;   
+   gap: 150px;
+
+   .menuList {
+      display: flex;
+      align-items: center;
+      gap: $big-gap;
+
+      .menuItem {
+         list-style-type: none;
+
+         .menuItemLink {
+            text-decoration: none;
+            color: inherit
+         }
+      }
+   }
+}
