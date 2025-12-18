@@ -12,7 +12,7 @@ interface ICatCardProps {
    onSkip: () => void;
 }
 
-const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip }) => {
+export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip }) => {
    const { title, first, last } = catItem.catData.name;
    const catFullName: string = title + ' ' + first + ' ' + last;
    
@@ -24,15 +24,13 @@ const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip }) => 
                alt={catFullName} 
                className={styles.img}
             />
-            <p>{catFullName}</p>
+            <p className={styles.name}>{catFullName}</p>
          </div>
          <div className={styles.cardActions}>
             <ActionButton type='match' onClick={onMatch} />
             <ActionButton type='message' onClick={onMessage} />
-            <ActionButton text='Пропустить' onClick={onSkip} />
+            <ActionButton text='Дальше' onClick={onSkip} />
          </div>
       </div>
    )
 }
-
-export default CatCard;

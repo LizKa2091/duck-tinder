@@ -1,21 +1,28 @@
 @import '../../../shared/styles/mixins.scss';
+@import '../../../shared/styles/variables.scss';
 
 .card {
    @include centeredContainer;
-   gap: 50px;
-   padding: 35px;
+   gap: $big-gap;
+   width: 100%;
 
    &Data {
       @include centeredContainer;
-      gap: 25px;
+      gap: $medium-gap;
+      width: 100%;
       
       .img {
-         width: 250px;
+         width: 100%;
+         max-height: calc(100vh - 97px - 150px - 125px);
+         object-fit: contain;
+      }
+      .name {
+         font-size: 26px;
       }
    }
    &Actions {
       display: flex;
-      justify-content: space-between;
-      width: 250px;
+      justify-content: space-evenly;
+      width: 100%;
    }
 }
