@@ -9,9 +9,9 @@ import styles from './MessagesPage.module.scss';
 
 export const MessagesPage: FC = () => {
    const { id } =  useParams();
-   const { messages } = useAppSelector((state) => state.messages);
+   const { dialogues } = useAppSelector((state) => state.dialogues);
 
-   const currDialogue = messages.find((msg) => msg.id === id);
+   const currDialogue = dialogues.find((msg) => msg.id === id);
 
    if (!id) {
       return <p>Выберите диалог</p>

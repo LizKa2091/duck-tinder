@@ -8,11 +8,11 @@ import type { IDialoguesStateItem } from '@entities/user/types';
 import styles from './DialoguePage.module.scss';
 
 export const DialoguePage: FC = () => {
-   const { messages } = useAppSelector((state) => state.messages);
+   const { dialogues } = useAppSelector((state) => state.dialogues);
    const navigate = useNavigate();
 
    const sortedDialogues = useMemo(() => {
-      return [...messages].sort((a, b) => {
+      return [...dialogues].sort((a, b) => {
          const getLastMessageTime = (dialogue: IDialoguesStateItem) => {
             if (!dialogue.messagesData.length) return 0;
 
@@ -24,7 +24,7 @@ export const DialoguePage: FC = () => {
          
          return timeB - timeA;
       });
-   }, [messages]);
+   }, [dialogues]);
 
    if (!sortedDialogues.length) {
       return <p>У вас пока нет диалогов</p>

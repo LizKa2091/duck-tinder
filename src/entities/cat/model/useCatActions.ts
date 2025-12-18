@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@shared/store/hooks";
 import { addToMatches } from "@entities/user/model/matchesSlice";
-import { createDialogue } from "@entities/user/model/messagesSlice";
+import { createDialogue } from "@entities/user/model/dialoguesSlice";
 import type { ICatItem } from "../types";
 import { useQueryClient } from "@tanstack/react-query";
 

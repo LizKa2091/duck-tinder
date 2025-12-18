@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import matchesReducer from '@entities/user/model/matchesSlice';
-import messagesReducer from '@entities/user/model/messagesSlice';
+import dialoguesReducer from '@entities/user/model/dialoguesSlice';
 import userDataReducer from '@entities/user/model/userDataSlice';
-import type { IMatchesState, IMessagesState, IUserData } from "@entities/user/types";
+import type { IMatchesState, IDialoguesState, IUserData } from "@entities/user/types";
 
 interface ICatTinderState {
    matches: IMatchesState;
-   messages: IMessagesState;
+   dialogues: IDialoguesState;
    userData: IUserData;
 }
 
@@ -20,7 +20,7 @@ const persistedState = (): ICatTinderState | undefined => {
 export const store = configureStore({
    reducer: {
       matches: matchesReducer,
-      messages: messagesReducer,
+      dialogues: dialoguesReducer,
       userData: userDataReducer
    },
    preloadedState: persistedState()
