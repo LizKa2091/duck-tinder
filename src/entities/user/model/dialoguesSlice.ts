@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IMessagesState, IDialoguesStateItem, ISendMessagePayload, CreateDialoguePayload } from "../types";
+import type { IDialoguesState, IDialoguesStateItem, ISendMessagePayload, CreateDialoguePayload } from "../types";
 
-const initialState: IMessagesState = {
-   messages: []
+const initialState: IDialoguesState = {
+   dialogues: []
 };
 
-const messagesSlice = createSlice({
-   name: 'messages',
+const dialoguesSlice = createSlice({
+   name: 'dialogues',
    initialState: initialState,
    reducers: {
       sendMessage: (state, action: PayloadAction<ISendMessagePayload>) => {
@@ -19,10 +19,10 @@ const messagesSlice = createSlice({
             timeStamp: currDate.toString()
          }
          
-         const existingDialogueIndex = state.messages.findIndex((dialogue) => dialogue.dialogueWith === receiver);
+         const existingDialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.dialogueWith === receiver);
 
          if (existingDialogueIndex !== -1) {
-            state.messages[existingDialogueIndex].messagesData.push(newMsg);
+            state.dialogues[existingDialogueIndex].messagesData.push(newMsg);
          }
          else {
             const newDialogue: IDialoguesStateItem = {
@@ -32,13 +32,13 @@ const messagesSlice = createSlice({
                messagesData: [newMsg]
             };
 
-            state.messages.push(newDialogue);
+            state.dialogues.push(newDialogue);
          }
       },
       createDialogue: (state, action: PayloadAction<CreateDialoguePayload>) => {
          const { dialogueWith, dialogueWithIconUrl } = action.payload;
 
-         const dialogueExists = state.messages.find((dialogue) => dialogue.dialogueWith === dialogueWith);
+         const dialogueExists = state.dialogues.find((dialogue) => dialogue.dialogueWith === dialogueWith);
 
          if (!dialogueExists) {
             const newDialogue: IDialoguesStateItem = {
@@ -48,11 +48,11 @@ const messagesSlice = createSlice({
                messagesData: []
             }
 
-            state.messages.push(newDialogue);
+            state.dialogues.push(newDialogue);
          }
       }
    }
 });
 
-export const { sendMessage, createDialogue } = messagesSlice.actions;
-export default messagesSlice.reducer;
+export const { sendMessage, createDialogue } = dialoguesSlice.actions;
+export default dialoguesSlice.reducer;

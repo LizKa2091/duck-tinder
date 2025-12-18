@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 import { useAppDispatch } from '@shared/store/hooks';
-import { sendMessage } from '@entities/user/model/messagesSlice';
+import { sendMessage } from '@entities/user/model/dialoguesSlice';
 
 import styles from './MessageInput.module.scss';
 

@@ -1,9 +1,9 @@
 import { useAppSelector } from "@shared/store/hooks";
 
 export const useLastMessageDate = (dialogueId: string): string | null => {
-   const { messages } = useAppSelector((state) => state.messages);
+   const { dialogues } = useAppSelector((state) => state.dialogues);
 
-   const currDialogueData = messages.find((dialogue) => dialogue.id === dialogueId);
+   const currDialogueData = dialogues.find((dialogue) => dialogue.id === dialogueId);
 
    if (!currDialogueData || currDialogueData.messagesData.length === 0) {
       return null

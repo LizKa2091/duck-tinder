@@ -34,8 +34,8 @@ export interface IMessageData {
    message: string;
 }
 
-export interface IMessagesState {
-   messages: IDialoguesStateItem[];
+export interface IDialoguesState {
+   dialogues: IDialoguesStateItem[];
 }
 
 // export type ISendMessagePayload = Omit<IMessageData, 'id' | 'timeStamp'>;
