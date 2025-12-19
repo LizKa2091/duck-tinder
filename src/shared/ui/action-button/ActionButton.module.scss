@@ -33,4 +33,8 @@
          background-size: contain;
       }
    }   
+   &.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+   }
 }
