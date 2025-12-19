@@ -20,6 +20,7 @@ export const FeedPage: FC = () => {
 
    return (
       <CatCard 
+         key={data.catData.id.value}
          catItem={data} 
          onMatch={() => handleMatch(data)} 
          onMessage={() => startDialogue(data)}
