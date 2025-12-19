@@ -12,6 +12,7 @@ export const useCatActions = () => {
       if (!data) return;
 
       dispatch(addToMatches({ cat: data }))
+      queryClient.invalidateQueries({ queryKey: ['catData'] })
    }
 
    const handleDialogue = (data: ICatItem) => {

@@ -1,4 +1,5 @@
 import { useState, type FC } from 'react';
+import clsx from 'clsx';
 
 import { ActionButton } from '@shared/ui/action-button';
 import type { ICatItem } from '../../types';
@@ -10,12 +11,15 @@ interface ICatCardProps {
    onMatch: () => void;
    onMessage: () => void;
    onSkip: () => void;
+   swipeDirection?: 'left' | 'right' | null;
 }
 
-export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip }) => {
+export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip, swipeDirection }) => {
    const [isMatched, setIsMatched] = useState<boolean>(false);
+
    const { title, first, last } = catItem.catData.name;
    const catFullName: string = title + ' ' + first + ' ' + last;
+   const isAnimating = !!swipeDirection;
 
    const handleMatch = () => {
       onMatch();
@@ -23,7 +27,11 @@ export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip
    }
 
    return (
-      <div className={styles.card}>
+      <div className={clsx(
+         styles.card,
+         isAnimating && swipeDirection === 'left' && styles.swipeLeft,
+         isAnimating && swipeDirection === 'right' && styles.swipeRight
+      )}>
          <div className={styles.cardData}>
             <img 
                src={catItem.catImage.url} 

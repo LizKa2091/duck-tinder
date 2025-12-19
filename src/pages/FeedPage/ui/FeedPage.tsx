@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useState, type FC } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 import { CatCard } from '@entities/cat/ui/cat-card/CatCard';
@@ -9,16 +9,29 @@ import { useStartDialogue } from '@entities/dialogue/model/useStartDialogue';
 import styles from './FeedPage.module.scss';
 
 export const FeedPage: FC = () => {
+   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+
    const { data, isLoading, isError } = useCat();
    const { handleMatch, handleSkip } = useCatActions();
    const { startDialogue } = useStartDialogue();
 
    const swipeHandlers = useSwipeable({
       onSwipedLeft: () => {
-         if (data) handleMatch(data);
+         setSwipeDirection('left');
+
+         setTimeout(() => {
+            if (data) handleMatch(data);
+            
+            setSwipeDirection(null);
+         }, 300);
       },
       onSwipedRight: () => {
-         handleSkip();
+         setSwipeDirection('right');
+
+         setTimeout(() => {
+            handleSkip();
+            setSwipeDirection(null);
+         }, 300)
       },
       trackMouse: true
    });
@@ -39,6 +52,7 @@ export const FeedPage: FC = () => {
             onMatch={() => handleMatch(data)} 
             onMessage={() => startDialogue(data)}
             onSkip={handleSkip}
+            swipeDirection={swipeDirection}
             {...swipeHandlers}
          />
       </div>
