@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { ActionButton } from '@shared/ui/action-button';
 import type { ICatItem } from '../../types';
@@ -16,9 +16,6 @@ export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip
    const [isMatched, setIsMatched] = useState<boolean>(false);
    const { title, first, last } = catItem.catData.name;
    const catFullName: string = title + ' ' + first + ' ' + last;
-   
-   useEffect(() => {
-   })
 
    const handleMatch = () => {
       onMatch();

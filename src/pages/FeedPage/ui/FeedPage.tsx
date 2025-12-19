@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 import { CatCard } from '@entities/cat/ui/cat-card/CatCard';
 import { useCat } from '@entities/cat/model/useCat';
@@ -10,6 +11,16 @@ export const FeedPage: FC = () => {
    const { handleMatch, handleSkip } = useCatActions();
    const { startDialogue } = useStartDialogue();
 
+   const swipeHandlers = useSwipeable({
+      onSwipedLeft: () => {
+         if (data) handleMatch(data);
+      },
+      onSwipedRight: () => {
+         handleSkip();
+      },
+      trackMouse: true
+   });
+
    if (isLoading) {
       return <p>Загрузка...</p>
    }
@@ -19,12 +30,15 @@ export const FeedPage: FC = () => {
    }
 
    return (
-      <CatCard 
-         key={data.catData.id.value}
-         catItem={data} 
-         onMatch={() => handleMatch(data)} 
-         onMessage={() => startDialogue(data)}
-         onSkip={handleSkip}
-      />
+      <div {...swipeHandlers}>
+         <CatCard 
+            key={data.catData.id.value}
+            catItem={data} 
+            onMatch={() => handleMatch(data)} 
+            onMessage={() => startDialogue(data)}
+            onSkip={handleSkip}
+            {...swipeHandlers}
+         />
+      </div>
    )
 }
