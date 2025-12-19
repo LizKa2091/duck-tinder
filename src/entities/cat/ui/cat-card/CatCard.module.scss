@@ -5,6 +5,16 @@
    @include centeredContainer;
    gap: $big-gap;
    width: 100%;
+   transition: transform 0.2s ease;
+   user-select: none;
+
+   &.swipeLeft {
+      transform: translateX(-100px) rotate(-15deg);
+   }
+   
+   &.swipeRight {
+      transform: translateX(100px) rotate(15deg);
+   }
 
    &Data {
       @include centeredContainer;
@@ -13,7 +23,7 @@
       
       .img {
          width: 100%;
-         max-height: calc(100vh - 97px - 150px - 125px);
+         max-height: calc(100vh - 97px - 150px - 125px - 24px - 50px);
          object-fit: contain;
       }
       .name {
@@ -23,6 +33,12 @@
    &Actions {
       display: flex;
       justify-content: space-evenly;
+      width: 100%;
+   }
+   .swipeTips {
+      display: flex;
+      justify-content: space-evenly;
+      gap: $big-gap;
       width: 100%;
    }
 }

@@ -11,7 +11,9 @@ const matchesSlice = createSlice({
    reducers: {
       addToMatches: (state, action: PayloadAction<AddMatchPayload>) => {
          const itemToMatch = action.payload;
-         const isAlreadyMatched = state.matches.some((match) => match.cat.catData.id === itemToMatch.cat.catData.id);
+         const isAlreadyMatched = state.matches.some((match) => 
+            match.cat.catData.id.value === itemToMatch.cat.catData.id.value
+         );
 
          if (!isAlreadyMatched) {
             state.matches.push({
