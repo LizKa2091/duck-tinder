@@ -25,4 +25,10 @@
       justify-content: space-evenly;
       width: 100%;
    }
+   .swipeTips {
+      display: flex;
+      justify-content: space-evenly;
+      gap: $big-gap;
+      width: 100%;
+   }
 }

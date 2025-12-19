@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export const Header: FC = () => {
    return (
       <header className={styles.header}>
-         <h1>Duck Tinder</h1>
+         <h1>Cat Tinder</h1>
          <ul className={styles.menuList}>
             {menuItems.map((item) => 
                <li key={item.id} className={styles.menuItem}>

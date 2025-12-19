@@ -6,6 +6,8 @@ import { useCat } from '@entities/cat/model/useCat';
 import { useCatActions } from '@entities/cat/model/useCatActions';
 import { useStartDialogue } from '@entities/dialogue/model/useStartDialogue';
 
+import styles from './FeedPage.module.scss';
+
 export const FeedPage: FC = () => {
    const { data, isLoading, isError } = useCat();
    const { handleMatch, handleSkip } = useCatActions();
@@ -30,7 +32,7 @@ export const FeedPage: FC = () => {
    }
 
    return (
-      <div {...swipeHandlers}>
+      <div {...swipeHandlers} className={styles.container}>
          <CatCard 
             key={data.catData.id.value}
             catItem={data} 

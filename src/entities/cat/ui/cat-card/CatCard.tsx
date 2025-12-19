@@ -37,6 +37,10 @@ export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip
             <ActionButton type='message' onClick={onMessage} />
             <ActionButton text='Дальше' onClick={onSkip} />
          </div>
+         <div className={styles.swipeTips}>
+            <p>Свайп вправо для перехода дальше</p>
+            <p>Свайп влево для мэтча</p>
+         </div>
       </div>
    )
 }
