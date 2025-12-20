@@ -33,11 +33,13 @@ export const CatCard: FC<ICatCardProps> = ({ catItem, onMatch, onMessage, onSkip
          isAnimating && swipeDirection === 'right' && styles.swipeRight
       )}>
          <div className={styles.cardData}>
-            <img 
-               src={catItem.catImage.url} 
-               alt={catFullName} 
-               className={styles.img}
-            />
+            <div className={styles.imgContainer}>
+               <img 
+                  src={catItem.catImage.url} 
+                  alt={catFullName} 
+                  className={styles.img}
+               />
+            </div>
             <p className={styles.name}>{catFullName}</p>
          </div>
          <div className={styles.cardActions}>

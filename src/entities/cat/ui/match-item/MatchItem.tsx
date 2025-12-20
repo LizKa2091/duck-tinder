@@ -18,7 +18,9 @@ export const MatchItem: FC<IMatchItemProps> = ({ catImage, catData }) => {
 
    return (
       <div className={styles.container}>
-         <img src={catImage} alt={`${fullCatName} image`} className={styles.img} />
+         <div className={styles.imgWrapper}>
+            <img src={catImage} alt={`${fullCatName} image`} className={styles.img} />
+         </div>
          <div className={styles.catName}>
             <p>{fullCatName}</p>
          </div>
